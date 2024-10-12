@@ -14,10 +14,8 @@ const DiscriptionBox = () => {
       </div>
       <div className="row">
         <div className="col-12 border p-4">
-          <p className='discriptionPara' >Welcome to Cignex, your ultimate platform for connecting with skilled freelancers and finding the perfect talent for your projects. Whether you're a business owner looking to hire experts or a freelancer seeking new opportunities, we’ve created a seamless environment to facilitate collaboration. Our diverse pool of professionals spans various fields, including graphic design, web development, writing, marketing, and more. Each freelancer is carefully vetted to ensure quality and reliability, making it easy for you to find the right fit for your needs.</p>
-          <p className='discriptionPara'>With our user-friendly interface, you can browse through profiles, view portfolios, and read reviews to make informed decisions. We also offer secure payment options and a straightforward project management system to keep everything on track.
-
-            Join our community today and unlock the potential of freelance talent at your fingertips. Let’s bring your projects to life together! </p>
+          <p className='discriptionPara' >The Recipe Management App is a dynamic and user-friendly platform designed to simplify the process of organizing and sharing recipes. Built with ReactJS, NodeJS, and MongoDB, the app allows users to easily create, edit, and manage their favorite recipes in one place. With a powerful search and filtering system, users can quickly find recipes based on ingredients, cuisine, or dietary preferences. </p>
+          <p className='discriptionPara'> The app features secure user authentication with JWT, ensuring that personal recipe collections remain private. Users can also explore popular recipes shared by others and contribute their own. Its clean, intuitive interface makes meal planning and cooking an enjoyable experience. Whether you're a home cook or a culinary enthusiast, this app is a must-have tool to elevate your kitchen game. </p>
         </div>
       </div>
     </div>

@@ -15,7 +15,7 @@ const Navbar = () => {
         <div className="container ">
           <div className="d-flex align-items-center">
             <Link className="navbar-brand" to="/"><img src={logo} alt="logo" width="65" /></Link>
-            <span className="navbar-email fs-3 mt-2"><Link to="/"> CIGNEX </Link></span>
+            <span className="navbar-email fs-3 mt-2"><Link to="/"> SHOOPER </Link></span>
           </div>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,10 +28,13 @@ const Navbar = () => {
                 <Link className="nav-link ul-color" aria-current="page" to="/">Home</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/active">Active-Projects</Link>
+                <Link className="nav-link" to="/dinner">Dinner</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link " aria-current="page" to="/completed">Completed-Projects</Link>
+                <Link className="nav-link " aria-current="page" to="/lunch">Lunch</Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link " aria-current="page" to="/breakfast">BreakFast</Link>
               </li>
 
             </ul>

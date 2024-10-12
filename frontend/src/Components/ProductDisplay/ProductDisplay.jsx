@@ -54,12 +54,8 @@ const ProductDisplay = ({ product }) => {
           </div>
 
           <pre className='pt-3 productIngredients'>
-            {product.details}
+            {product.ingredients}
           </pre><br />
-
-          <div>
-            <h5><span className='text-danger'> Status: </span> {product.status}</h5>
-          </div>
 
 
 

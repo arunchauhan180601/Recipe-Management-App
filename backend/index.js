@@ -19,7 +19,7 @@ app.use(express.urlencoded({extended: false}));
 
 
 app.get("/", (req, res)=> {
-  res.send("Welcome to Freelance backend API");
+  res.send("Welcome to Cooking backend API");
 })
 
 
@@ -63,7 +63,7 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true
    },
-   details: {
+   ingredients: {
     type: String,
     required: true
    },
@@ -73,15 +73,6 @@ const productSchema = new mongoose.Schema({
    },
    old_price: {
     type: Number,
-    required: true
-   },
-   date: {
-    type: Date,
-    default: Date.now,
-    required: true
-   },
-   status: {
-    type: String,
     required: true
    },
    avilable: {
@@ -118,9 +109,7 @@ app.post("/addProduct", async (req, res)=>{
       category: req.body.category,
       new_price: req.body.new_price,
       old_price: req.body.old_price,
-      details: req.body.details,
-      date: req.body.date,
-      status: req.body.status
+      ingredients: req.body.ingredients
     });
 
     console.log(product);
@@ -244,8 +233,8 @@ app.post("/login", async (req, res)=> {
 
     // Creating endpoint for Popular in women 
 
-    app.get("/popularProjects", async (req, res)=> {
-      let products = await Product.find({category: "active"});
+    app.get("/popularInLunch", async (req, res)=> {
+      let products = await Product.find({category: "lunch"});
       let popularinlunch = products.slice(0,4);
       console.log("PopularInLunch Fetched");
       res.send(popularinlunch)

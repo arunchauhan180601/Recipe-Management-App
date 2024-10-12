@@ -11,7 +11,7 @@ const Footer = () => {
 
         <div className="col-lg-2 col-md-4 d-flex justify-content-center align-items-center pt-2">
           <img src={logo_img} />
-          <h2 className='fs-2 fw-bold ps-3'>CIGNEX</h2>
+          <h2 className='fs-2 fw-bold ps-3'>SHOOPER</h2>
         </div>
       </div>
 

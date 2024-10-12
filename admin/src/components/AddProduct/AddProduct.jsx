@@ -15,12 +15,11 @@ const AddProduct = () => {
   const [productDetails, setProductDetails] = useState({
     name: "",
     image: "",
-    category: "active",
+    category: "lunch",
     old_price: "",
     new_price: "",
-    details: "",
-    date: "",
-    status: ""
+    ingredients: "",
+
   })
 
   const changeHandler = (e) => {
@@ -74,7 +73,7 @@ const AddProduct = () => {
 
           <div className="row mt-3 ">
             <div className="col-12">
-              <label htmlFor="name" >Project Title</label><br />
+              <label htmlFor="name" >Product Title</label><br />
               <input type="text" placeholder="Type here" name="name" id="name" value={productDetails.name}
                 onChange={changeHandler}></input>
             </div>
@@ -82,14 +81,9 @@ const AddProduct = () => {
 
           <div className="row mt-3 " style={{ width: "100%" }}>
             <div className="col-12 col-md-6">
-              <label htmlFor="details" >Product details</label><br />
-              <textarea type="text" placeholder="Type here" name="details" id="details" value={productDetails.details}
+              <label htmlFor="ingredients" >Product ingredients</label><br />
+              <textarea type="text" placeholder="Type here" name="ingredients" id="ingredients" value={productDetails.ingredients}
                 onChange={changeHandler}></textarea>
-            </div>
-            <div className="col-12 col-md-6">
-              <label htmlFor="date" >Project DueDate</label><br />
-              <input type="date" placeholder="Type here" name="date" id="date" value={productDetails.date}
-                onChange={changeHandler}></input>
             </div>
           </div>
 
@@ -106,16 +100,14 @@ const AddProduct = () => {
 
           <div className="row mt-3">
             <div className="col-6 col-md-6">
-              <label htmlFor="category">Project Category</label>
+              <label htmlFor="category">Product Category</label>
               <select name="category" value={productDetails.category} onChange={changeHandler}>
-                <option value="active">Active</option>
-                <option value="completed">Completed</option>
+                <option value="dinner">Dinner</option>
+                <option value="lunch">Lunch</option>
+                <option value="breakfast">Breakfast</option>
               </select>
             </div>
-            <div className="col-6">
-              <label htmlFor="status">Status</label>
-              <input text="text" placeholder="Type here" name="status" value={productDetails.status} onChange={changeHandler}></input>
-            </div>
+
           </div>
 
           <div className="row mt-3">
