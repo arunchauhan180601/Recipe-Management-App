@@ -19,7 +19,7 @@ app.use(express.urlencoded({extended: false}));
 
 
 app.get("/", (req, res)=> {
-  res.send("Welcome to E-commerce backend API");
+  res.send("Welcome to Freelance backend API");
 })
 
 
@@ -63,7 +63,7 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true
    },
-   ingredients: {
+   details: {
     type: String,
     required: true
    },
@@ -73,6 +73,15 @@ const productSchema = new mongoose.Schema({
    },
    old_price: {
     type: Number,
+    required: true
+   },
+   date: {
+    type: Date,
+    default: Date.now,
+    required: true
+   },
+   status: {
+    type: String,
     required: true
    },
    avilable: {
@@ -109,7 +118,9 @@ app.post("/addProduct", async (req, res)=>{
       category: req.body.category,
       new_price: req.body.new_price,
       old_price: req.body.old_price,
-      ingredients: req.body.ingredients,
+      details: req.body.details,
+      date: req.body.date,
+      status: req.body.status
     });
 
     console.log(product);
@@ -233,8 +244,8 @@ app.post("/login", async (req, res)=> {
 
     // Creating endpoint for Popular in women 
 
-    app.get("/popularinlunch", async (req, res)=> {
-      let products = await Product.find({category: "lunch"});
+    app.get("/popularProjects", async (req, res)=> {
+      let products = await Product.find({category: "active"});
       let popularinlunch = products.slice(0,4);
       console.log("PopularInLunch Fetched");
       res.send(popularinlunch)
@@ -242,51 +253,134 @@ app.post("/login", async (req, res)=> {
 
     // creating middleware to fetch user
 
-    const fetchUser = async (req, res, next)=> {
-       const token = req.header("auth-token");
-       if(!token){
-        res.status(401).send({errors: "Please authentication using valid token"})
-       }
-       else{
-         try {
-          const data = jwt.verify(token, "secret_ecom");
-          req.user = data.user;
-          next();
-         } catch (error) {
-           res.status(401).send({errors: "Please authentication using valid token"})
-         }
-       }
-    }
+    // const fetchUser = async (req, res, next)=> {
+    //    const token = req.header("auth-token");
+    //    if(!token){
+    //     res.status(401).send({errors: "Please authentication using valid token"})
+    //    }
+    //    else{
+    //      try {
+    //       const data = jwt.verify(token, "secret_ecom");
+    //       req.user = data.user;
+    //       next();
+    //      } catch (error) {
+    //        res.status(401).send({errors: "Please authentication using valid token"})
+    //      }
+    //    }
+    // }
+
+    // creating middleware to fetch user
+const fetchUser = async (req, res, next) => {
+  const token = req.header("auth-token");
+  if (!token) {
+    return res.status(401).send({ errors: "Please authenticate using a valid token" });
+  }
+  try {
+    const data = jwt.verify(token, "secret_ecom");
+    req.user = data.user;
+    console.log("Fetched User:", req.user); // Add this line for debugging
+    next();
+  } catch (error) {
+    return res.status(401).send({ errors: "Please authenticate using a valid token" });
+  }
+};
+
 
     // Creating endpoint for adding products in cartdata
-     app.post("/addtocart", fetchUser, async (req, res)=> {
-        // console.log(req.body, req.user);
-        console.log("Added", req.body.itemId);
-        let userData = await Users.findOne({_id: req.user.id});
-        userData.cartData[req.body.itemId] += 1;
-        await Users.findOneAndUpdate({_id: req.user.id},{cartData: userData.cartData});
+    //  app.post("/addtocart", fetchUser, async (req, res)=> {
+    //     // console.log(req.body, req.user);
+    //     console.log("Added", req.body.itemId);
+    //     let userData = await Users.findOne({_id: req.user.id});
+    //     userData.cartData[req.body.itemId] += 1;
+    //     await Users.findOneAndUpdate({_id: req.user.id},{cartData: userData.cartData});
 
-        res.send("Added");
+    //     res.send("Added");
 
-     })
+    //  })
+
+    app.post("/addtocart", fetchUser, async (req, res) => {
+      console.log("Added", req.body.itemId);
+      let userData = await Users.findOne({ _id: req.user.id });
+      
+      // Check if userData is null
+      if (!userData) {
+          return res.status(404).json({ success: false, message: "User not found" });
+      }
+      
+      if (!userData.cartData) {
+          return res.status(400).json({ success: false, message: "Cart data not initialized" });
+      }
+  
+      userData.cartData[req.body.itemId] += 1;
+      await Users.findOneAndUpdate({ _id: req.user.id }, { cartData: userData.cartData });
+      
+      res.send("Added");
+  });
+  
 
    // Creating endpoint to remove product from cartdata
-   app.post("/removefromcart", fetchUser, async (req, res)=> {
+//    app.post("/removefromcart", fetchUser, async (req, res)=> {
+//   console.log("removed", req.body.itemId);
+//   let userData = await Users.findOne({_id: req.user.id});
+//   if( userData.cartData[req.body.itemId] > 0)
+//   userData.cartData[req.body.itemId] -= 1;
+//   await Users.findOneAndUpdate({_id: req.user.id},{cartData: userData.cartData});
+//   res.send("Removed");
+// })
+
+app.post("/removefromcart", fetchUser, async (req, res) => {
   console.log("removed", req.body.itemId);
-  let userData = await Users.findOne({_id: req.user.id});
-  if( userData.cartData[req.body.itemId] > 0)
-  userData.cartData[req.body.itemId] -= 1;
-  await Users.findOneAndUpdate({_id: req.user.id},{cartData: userData.cartData});
+  let userData = await Users.findOne({ _id: req.user.id });
+  
+  // Check if userData is null
+  if (!userData) {
+      return res.status(404).json({ success: false, message: "User not found" });
+  }
+
+  if (!userData.cartData) {
+      return res.status(400).json({ success: false, message: "Cart data not initialized" });
+  }
+
+  if (userData.cartData[req.body.itemId] > 0) {
+      userData.cartData[req.body.itemId] -= 1;
+      await Users.findOneAndUpdate({ _id: req.user.id }, { cartData: userData.cartData });
+  }
+
   res.send("Removed");
-})
+});
+
 
 //  Creating endpoint to get cartData
 
-app.post("/getcart", fetchUser, async (req, res)=> {
+// Creating endpoint to get cartData
+// app.post("/getcart", fetchUser, async (req, res) => {
+//   console.log("Getcart");
+//   let userData = await Users.findOne({ _id: req.user.id });
+
+//   if (!userData) {
+//     return res.status(404).json({ success: false, message: "User not found" });
+//   }
+
+//   res.json(userData.cartData);
+// });
+
+app.post("/getcart", fetchUser, async (req, res) => {
   console.log("Getcart");
-  let userData = await Users.findOne({_id: req.user.id});
-   res.json(userData.cartData);
-})
+  let userData = await Users.findOne({ _id: req.user.id });
+
+  // Check if userData is null
+  if (!userData) {
+      return res.status(404).json({ success: false, message: "User not found" });
+  }
+
+  if (!userData.cartData) {
+      return res.status(400).json({ success: false, message: "Cart data not initialized" });
+  }
+
+  res.json(userData.cartData);
+});
+
+
 
 
 app.listen(PORT, ()=> {

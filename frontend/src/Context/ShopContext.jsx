@@ -56,15 +56,17 @@ const ShopContextProvider = ({ children }) => {
       const updatedCart = { ...prev };
       updatedCart[itemId] = prev[itemId] + 1;
       if (localStorage.getItem("auth-token")) {
-        fetch("http://localhost:3000/addtocart", {
+        fetch("http://localhost:3000/getcart", {
           method: "POST",
           headers: {
             Accept: "application/form-data",
             "auth-token": `${localStorage.getItem("auth-token")}`,
-            "Content-Type": "application/json",
+            "Content-Type": "application/json"
           },
-          body: JSON.stringify({ "itemId": itemId })
+          body: JSON.stringify({}) // Send an empty object if no data is needed.
+          // You might want to change this if you're expecting a body.
         })
+
           .then((res) => res.json())
           .then((data) => console.log(data))
       }

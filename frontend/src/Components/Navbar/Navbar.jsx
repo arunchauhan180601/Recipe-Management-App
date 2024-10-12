@@ -15,7 +15,7 @@ const Navbar = () => {
         <div className="container ">
           <div className="d-flex align-items-center">
             <Link className="navbar-brand" to="/"><img src={logo} alt="logo" width="65" /></Link>
-            <span className="navbar-email fs-3 mt-2"><Link to="/"> SHOPPER  </Link></span>
+            <span className="navbar-email fs-3 mt-2"><Link to="/"> CIGNEX </Link></span>
           </div>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,17 +25,15 @@ const Navbar = () => {
           <div className="collapse navbar-collapse " id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 ">
               <li className="nav-item">
-                <Link className="nav-link ul-color" aria-current="page" to="/">Shop</Link>
+                <Link className="nav-link ul-color" aria-current="page" to="/">Home</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/dinners">Dinner</Link>
+                <Link className="nav-link" to="/active">Active-Projects</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link " aria-current="page" to="/lunches">Lunch</Link>
+                <Link className="nav-link " aria-current="page" to="/completed">Completed-Projects</Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/breakfasts">Breakfast</Link>
-              </li>
+
             </ul>
 
             {localStorage.getItem("auth-token") ? <button className="btn btn-light text-dark navbar-btn" onClick={() => { localStorage.removeItem("auth-token"); navigate("/") }}>Logout</button> : <Link className="nav-link" to="/login"><button type="button" className="btn btn-light text-dark navbar-btn">  Login</button></Link>}

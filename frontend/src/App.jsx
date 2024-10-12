@@ -10,10 +10,8 @@ import LoginSignup from "./Pages/LoginSignup"
 import Shop from "./Pages/shop"
 import Footer from "./Components/Footer/Footer"
 
-
-import breakfast_banner from "./Components/Assets/breakfast_banner1.avif"
-import lunch_banner from "./Components/Assets/lunch_banner1.jpg"
-import dinner_banner from "./Components/Assets/dinner_banner.avif"
+import Active_projects_Banner from "./Components/Assets/Freelance-images/active-projects-benner.jpeg"
+import Completed_Projects_Banner from "./Components/Assets/Freelance-images/Completed-projects-banner.png"
 
 
 function App() {
@@ -25,9 +23,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Shop />} > </Route>
-          <Route path="/dinners" element={<ShopCategory banner={dinner_banner} category="dinner" />} > </Route>
-          <Route path="/lunches" element={<ShopCategory banner={lunch_banner} category="lunch" />} > </Route>
-          <Route path="/breakfasts" element={<ShopCategory banner={breakfast_banner} category="breakfast" />} > </Route>
+          <Route path="/active" element={<ShopCategory banner={Active_projects_Banner} category="active" />} > </Route>
+          <Route path="/completed" element={<ShopCategory banner={Completed_Projects_Banner} category="completed" />} > </Route>
           <Route path="/product" element={<Product />} >
             <Route path=":productId" element={<Product />} ></Route>
           </Route>

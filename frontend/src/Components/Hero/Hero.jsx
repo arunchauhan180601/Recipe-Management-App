@@ -3,7 +3,7 @@ import "./Hero.css"
 import { FaArrowRight } from 'react-icons/fa'
 import handIcon from "../Assets/hand_icon.png"
 // import HeroImage from "../Assets/hero_image.png"
-import Home_page_girl from "../Assets/Home_page_girl.jpg"
+import Home_page_girl from "../Assets/Freelance-images/Freelance-girl.png"
 import { Link } from 'react-router-dom'
 
 
@@ -15,7 +15,7 @@ const Hero = () => {
 
           <div className="col-sm-6 hero-left-side   ">
             <h3 className='subHeading'>NEW ARRIVALS ONLY</h3>
-            <h1 className='heading'>new   <img src={handIcon} className='handicon img-fluid' /> <br /> Recipes  <br /> for everyone</h1>
+            <h1 className='heading'>new   <img src={handIcon} className='handicon img-fluid' /> <br /> Projects  <br /> for everyone</h1>
 
             <Link to="#"><button type="button" className="btn  herobtn">Latest Collection <FaArrowRight /></button></Link>
           </div>

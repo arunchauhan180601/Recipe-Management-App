@@ -14,8 +14,10 @@ const DiscriptionBox = () => {
       </div>
       <div className="row">
         <div className="col-12 border p-4">
-          <p className='discriptionPara' >A website that allows people to share and discover cooking recipes, offer cooking tutorials, and sell recipe eBooks, meal prep services, and digital cookbooks over the internet rather than in a traditional cookbook store or cooking school. Through a recipe-sharing website, a cook or chef can upload recipes.By combining the convenience of online learning with a marketplace for culinary tools, it revolutionizes the way people approach cooking and meal preparation. </p>
-          <p className='discriptionPara'>A platform that enables users to explore, create, and share unique cooking recipes, sell culinary courses, kitchen gadgets, and digital meal plans online rather than in a physical culinary school or kitchenware shop. Through a culinary website, food enthusiasts can publish their favorite recipes.This platform fosters a dynamic community where users can engage with one another, exchange tips, and inspire creativity in the kitchen. </p>
+          <p className='discriptionPara' >Welcome to Cignex, your ultimate platform for connecting with skilled freelancers and finding the perfect talent for your projects. Whether you're a business owner looking to hire experts or a freelancer seeking new opportunities, we’ve created a seamless environment to facilitate collaboration. Our diverse pool of professionals spans various fields, including graphic design, web development, writing, marketing, and more. Each freelancer is carefully vetted to ensure quality and reliability, making it easy for you to find the right fit for your needs.</p>
+          <p className='discriptionPara'>With our user-friendly interface, you can browse through profiles, view portfolios, and read reviews to make informed decisions. We also offer secure payment options and a straightforward project management system to keep everything on track.
+
+            Join our community today and unlock the potential of freelance talent at your fingertips. Let’s bring your projects to life together! </p>
         </div>
       </div>
     </div>
