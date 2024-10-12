@@ -10,8 +10,8 @@ import LoginSignup from "./Pages/LoginSignup"
 import Shop from "./Pages/shop"
 import Footer from "./Components/Footer/Footer"
 
-import Active_projects_Banner from "./Components/Assets/Freelance-images/active-projects-benner.jpeg"
-import Completed_Projects_Banner from "./Components/Assets/Freelance-images/Completed-projects-banner.png"
+import Active_projects_Banner from "./Components/Assets/Freelance-images/active-banner.avif"
+import Completed_Projects_Banner from "./Components/Assets/Freelance-images/completed.jpg"
 
 
 function App() {

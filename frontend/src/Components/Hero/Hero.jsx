@@ -3,7 +3,7 @@ import "./Hero.css"
 import { FaArrowRight } from 'react-icons/fa'
 import handIcon from "../Assets/hand_icon.png"
 // import HeroImage from "../Assets/hero_image.png"
-import Home_page_girl from "../Assets/Freelance-images/Freelance-girl.png"
+import Home_page_girl from "../Assets/Freelance-images/girl-homepage.jpg"
 import { Link } from 'react-router-dom'
 
 
